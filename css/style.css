@@ -1,0 +1,68 @@
+/* Stilizare generală a paginii */
+body {
+    font-family: Arial, sans-serif;
+    color: #055;
+    background-color: #e0f2f1; /* Fundal verde deschis */
+}
+
+/* Stilizare meniu */
+nav {
+    background-color: #0277bd; /* Albastru ocean */
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    display: inline-block;
+}
+
+nav ul li a:hover, nav ul li a:focus {
+    background-color: #004c8c; /* Albastru mai închis pentru hover/focus */
+    color: #e0f2f1; /* Verde deschis pentru text */
+}
+
+/* Stilizare titluri și text */
+h1, h2, h3 {
+    color: #0277bd; /* Albastru ocean */
+}
+
+p {
+    color: #055; /* Nuanță mai închisă de albastru */
+}
+
+/* Buton/Stilizare link-uri */
+a.button, button {
+    background-color: #4db6ac; /* Verde deschis */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+a.button:hover, button:hover {
+    background-color: #009688; /* Verde mai închis pentru hover */
+}
+
+/* Footer */
+footer {
+    background-color: #0277bd;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+}
