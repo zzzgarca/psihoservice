@@ -3,7 +3,7 @@ class HomeController {
     public function index() {
         // Datele care vor fi trimise către view
         $data = [
-            'title' => 'Bine ai venit!',
+            'title' => 'Pagina Principală - PsihoService', // Adăugarea titlului aici
             'content' => 'Acesta este conținutul paginii de home.'
         ];
         
