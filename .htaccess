@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# Redirecționează traficul către subdirectorul /public, dar permite accesul la resursele statice
+RewriteCond %{REQUEST_URI} !^/psihoservice/public/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^psihoservice/(.*)$ /psihoservice/public/$1 [L]
+
+# Asigură că toate cererile non-statice sunt tratate de index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^psihoservice/public/(.+)$ /psihoservice/public/index.php?url=$1 [QSA,L]
+
+# Pentru cererea rădăcină a aplicației, servește index.php
+RewriteRule ^psihoservice/$ /psihoservice/public/index.php [L]
+
