@@ -6,14 +6,14 @@ require_once __DIR__ . '/../templates/meniu.php';
 <h1><?= isset($title) ? $title : 'Contact' ?></h1>
 <p><?= isset($content) ? $content : 'Trimiteți-ne un mesaj.' ?></p>
 
-<!-- Afișare mesaje de succes sau eroare -->
+
 <?php if (!empty($successMessage)) : ?>
     <p style="color: green;"><?= htmlspecialchars($successMessage) ?></p>
 <?php elseif (!empty($errorMessage)) : ?>
     <p style="color: red;"><?= htmlspecialchars($errorMessage) ?></p>
 <?php endif; ?>
 
-<!-- Formular de contact -->
+
 <form action="<?= BASE_URL ?>contact/sendMessage" method="post">
     <label for="nume">Nume:</label>
     <input type="text" id="nume" name="nume" required>

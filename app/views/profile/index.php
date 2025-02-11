@@ -1,6 +1,5 @@
 <?php
-// În app/views/profile/approve_users.php
-include_once __DIR__ . '/../templates/header.php'; // Ajustează calea dacă este necesar
+include_once __DIR__ . '/../templates/header.php';
 ?>
 
 <h1>Profilul tău</h1>

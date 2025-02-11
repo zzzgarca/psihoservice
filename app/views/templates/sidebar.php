@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-$role = $_SESSION['role'] ?? null;
+$role = isset($_SESSION['role']) ? $_SESSION['role'] : null;
 ?>
 
 <div class="sidebar">

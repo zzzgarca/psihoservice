@@ -1,24 +1,20 @@
 <?php
 class ProfileController {
     public function index() {
-        // Verificăm dacă sesiunea este activă
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
         if (!isset($_SESSION['user_id'])) {
-            // Redirecționare la login dacă utilizatorul nu este autentificat
             header('Location: ' . BASE_URL . 'logare');
             exit;
         }
 
-        // Preluăm datele utilizatorului din sesiune
         $data = [
             'email' => $_SESSION['email'],
             'role' => $_SESSION['role']
         ];
 
-        // Încărcăm pagina de profil
         $this->view('profile/index', $data);
     }
 

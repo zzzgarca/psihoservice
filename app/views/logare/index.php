@@ -6,7 +6,7 @@ require_once __DIR__ . '/../templates/meniu.php';
 <h1><?= isset($title) ? $title : 'Autentificare' ?></h1>
 <h3><?= isset($content) ? $content : 'Introduceți datele pentru a vă autentifica.' ?></h3>
 
-<!-- Afișare mesaj de eroare dacă există -->
+
 <?php if (!empty($errorMessage)) : ?>
     <p style="color: red;"><?= htmlspecialchars($errorMessage) ?></p>
 <?php endif; ?>

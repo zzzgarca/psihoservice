@@ -13,7 +13,6 @@ class DashboardController
             exit;
         }
 
-        // Redirecționăm utilizatorii către dashboard-ul corespunzător
         switch ($_SESSION['role']) {
             case 'psiholog':
                 header('Location: ' . BASE_URL . 'dashboard/psiholog');

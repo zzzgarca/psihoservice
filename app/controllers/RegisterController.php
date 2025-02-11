@@ -1,7 +1,7 @@
 <?php
 class RegisterController {
     public function index() {
-        $this->view('register/index'); // În loc de 'register'
+        $this->view('register/index');
     }
 
     public function submit() {
@@ -14,19 +14,19 @@ class RegisterController {
             $password = trim($_POST['password']);
             $rol = trim($_POST['rol']);
 
-            // Validare email
+
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $this->view('register', ['errorMessage' => 'Email invalid.']);
                 return;
             }
 
-            // Hash-uim parola
+
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-            // Setăm statusul contului
+
             $status = ($rol === 'client') ? 'approved' : 'pending';
 
-            // Verificăm dacă email-ul există deja
+
             $stmt = $pdo->prepare("SELECT * FROM Users WHERE Email = :email");
             $stmt->bindParam(':email', $email);
             $stmt->execute();
@@ -36,7 +36,7 @@ class RegisterController {
                 return;
             }
 
-            // Inserăm utilizatorul în baza de date
+
             $stmt = $pdo->prepare("INSERT INTO Users (Nume, Prenume, Email, Parola, Rol, Status) VALUES (:nume, :prenume, :email, :parola, :rol, :status)");
             $stmt->bindParam(':nume', $nume);
             $stmt->bindParam(':prenume', $prenume);

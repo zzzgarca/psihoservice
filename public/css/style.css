@@ -1,15 +1,13 @@
-/* Stilizare generală a paginii */
-
 header {
-    background-color: #0277bd; /* Albastru ocean pentru fundal */
-    color: white; /* Text alb pentru contrast */
-    padding: 20px 0; /* Spațiere verticală */
-    text-align: center; /* Centrarea textului */
+    background-color: #0277bd;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
 }
 
-/* Stilizare toate heading-urile */
+
 h1, h2, h3, h4, h5, h6 {
-    color: #01579b; /* Albastru mai închis pentru titluri */
+    color: #01579b;
     margin-left: 50px;
     margin-right: 50px;
 }
@@ -17,14 +15,14 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
     font-family: Arial, sans-serif;
-    color: #033; /* Nuanță mai închisă de albastru pentru text */
-    background-color: #e0f2f1; /* Fundal verde deschis */
-    margin: 0 10px; /* Adaugă o marjă mică pe laturi */
+    color: #033;
+    background-color: #e0f2f1;
+    margin: 0 10px;
 }
 
-/* Stilizare meniu */
+
 nav {
-    background-color: #01579b; /* Nuanță mai închisă de albastru pentru meniu */
+    background-color: #01579b;
     padding: 10px 0;
 }
 
@@ -48,22 +46,22 @@ nav ul li a {
 }
 
 nav ul li a:hover, nav ul li a:focus {
-    background-color: #002f6c; /* Albastru mult mai închis pentru hover/focus */
-    color: #e0f2f1; /* Verde deschis pentru text */
+    background-color: #002f6c;
+    color: #e0f2f1;
 }
 
-/* Stilizare titluri și text */
+
 h1, h2, h3 {
-    color: #01579b; /* Albastru mai închis pentru titluri */
+    color: #01579b;
 }
 
 p {
-    color: #033; /* Nuanță mai închisă de albastru pentru paragrafe */
+    color: #033;
 }
 
-/* Buton/Stilizare link-uri */
+
 a.button, button {
-    background-color: #4db6ac; /* Verde deschis */
+    background-color: #4db6ac;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -72,7 +70,7 @@ a.button, button {
 }
 
 a.button:hover, button:hover {
-    background-color: #009688; /* Verde mai închis pentru hover */
+    background-color: #009688;
 }
 
 /* Footer */
@@ -91,7 +89,7 @@ footer a {
 
 footer a i {
     margin-right: 8px;
-    font-size: 20px; /* Ajustează dimensiunea icoanelor */
+    font-size: 20px;
 }
 
 footer a:hover, footer a:focus {
@@ -154,11 +152,11 @@ footer a:hover, footer a:focus {
     }
 
     nav ul li {
-        display: block; /* Schimbă link-urile din meniu în bloc pentru ecrane mici */
-        margin: 10px 0; /* Adaugă spațiere verticală */
+        display: block;
+        margin: 10px 0;
     }
 
     .header-icons i {
-        font-size: 18px; /* Reducem dimensiunea icoanelor pentru ecrane mici */
+        font-size: 18px;
     }
 }
