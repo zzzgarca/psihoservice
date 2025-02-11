@@ -11,6 +11,9 @@
         </a> |
         <a href="https://www.instagram.com/monica.bartucz/" target="_blank">
             <i class="fab fa-instagram-square"></i> Pagina de Instagram Monica Bartucz
-        </a>
+        </a> |
+        <p>&copy; <?= date('Y') ?> PsihoService. Toate drepturile rezervate.</p>
     </div>
 </footer>
+</body>
+</html>

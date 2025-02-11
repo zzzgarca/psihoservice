@@ -1,18 +1,30 @@
 <?php
 class ServicesController {
     public function index() {
-        // Datele care vor fi trimise către view
+        global $pdo;
+
+        $stmt = $pdo->query("SELECT * FROM Servicii");
+        $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
         $data = [
             'title' => 'Serviciile Noastre - PsihoService',
-            'content' => 'Aici veți găsi detalii despre serviciile oferite de PsihoService.'
+            'content' => 'Aici veți găsi detalii despre serviciile oferite de PsihoService.',
+            'services' => $services
         ];
-        
-        // Încărcarea view-ului pentru servicii
+
         $this->view('servicii/index', $data);
     }
 
-    // Metoda pentru încărcarea view-urilor
     public function view($view, $data = []) {
-        require_once "app/views/{$view}.php";
+        $viewFile = "app/views/{$view}.php";
+
+        if (file_exists($viewFile)) {
+            extract($data);
+            require_once "app/views/templates/header.php";
+            require_once $viewFile;
+            require_once "app/views/templates/footer.php";
+        } else {
+            die("View-ul {$view} nu există!");
+        }
     }
 }

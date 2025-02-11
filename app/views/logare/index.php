@@ -1,21 +1,25 @@
-<?php 
-include_once __DIR__ . '/../templates/header.php'; 
+<?php
+include_once __DIR__ . '/../templates/header.php';
+require_once __DIR__ . '/../templates/meniu.php';
 ?>
 
-    <?php require_once __DIR__ . '/../templates/meniu.php'; ?>
-    <h1><?php echo $data['title']; ?></h1>
-    <h3><?php echo $data['content']; ?></h3>
+<h1><?= isset($title) ? $title : 'Autentificare' ?></h1>
+<h3><?= isset($content) ? $content : 'Introduceți datele pentru a vă autentifica.' ?></h3>
 
-    <form action="/logare/authenticate" method="post">
-        <label for="username">Nume utilizator:</label>
-        <input type="text" id="username" name="username" required>
-        
-        <label for="password">Parolă:</label>
-        <input type="password" id="password" name="password" required>
-        
-        <button type="submit">Logare</button>
-    </form>
+<!-- Afișare mesaj de eroare dacă există -->
+<?php if (!empty($errorMessage)) : ?>
+    <p style="color: red;"><?= htmlspecialchars($errorMessage) ?></p>
+<?php endif; ?>
 
+<form action="<?= BASE_URL ?>logare/authenticate" method="post">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Parolă:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Logare</button>
+</form>
 
 <?php include_once __DIR__ . '/../templates/footer.php'; ?>
 </body>

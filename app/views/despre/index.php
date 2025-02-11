@@ -1,11 +1,9 @@
-<?php 
-include_once __DIR__ . '/../templates/header.php'; // Ajustează calea dacă este necesar
+<?php
+include_once __DIR__ . '/../templates/header.php';
+require_once __DIR__ . '/../templates/meniu.php';
 ?>
 
-    <?php require_once __DIR__ . '/../templates/meniu.php'; ?>
-    <h1><?php echo $data['title']; ?></h1>
-    <h3><?php echo $data['content']; ?></h3>
+<h1><?= isset($title) ? $title : 'Despre Noi' ?></h1>
+<p><?= isset($content) ? $content : 'Aceasta este pagina "Despre Noi".' ?></p>
 
 <?php include_once __DIR__ . '/../templates/footer.php'; ?>
-</body>
-</html>

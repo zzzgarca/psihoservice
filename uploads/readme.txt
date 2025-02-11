@@ -1,1 +1,0 @@
- Uploads ar trebui sa fie plasat la final în afara public_html de pe server, in folderul userului al hostingului

@@ -11,7 +11,7 @@ Options -Indexes
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Redirecționează toate cererile rămase către index.php
+# Redirecționează toate cererile rămase către approve_users.php
 RewriteRule ^ index.php [QSA,L]
 
 # Previne accesul la fișierele .htaccess și alte fișiere ascunse
