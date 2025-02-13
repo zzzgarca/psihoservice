@@ -10,20 +10,34 @@ class LoginController {
     }
 
     public function authenticate() {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            global $pdo; // Accesăm conexiunea la baza de date
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            global $pdo;
 
             $email = trim($_POST['email']);
             $password = trim($_POST['password']);
 
-            $user = $this->getUserByEmail($email);
+            // Check if the user exists
+            $stmt = $pdo->prepare("SELECT * FROM Users WHERE Email = :email");
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($user && password_verify($password, $user['Parola'])) {
-                $this->initializeUserSession($user);
+                if ($user['Status'] !== 'approved') {
+                    $this->view('logare/index', ['errorMessage' => 'Contul nu este aprobat.']);
+                    return;
+                }
+
+                session_start();
+                $_SESSION['user_id'] = $user['ID_User'];
+                $_SESSION['email'] = $user['Email'];
+                $_SESSION['role'] = $user['Rol'];
+
+                // Redirect to dashboard
                 header('Location: ' . BASE_URL . 'dashboard');
                 exit;
             } else {
-                $this->view('logare/index', ['errorMessage' => 'Email sau parolă incorectă']);
+                $this->view('logare/index', ['errorMessage' => 'Email sau parolă incorecte.']);
             }
         }
     }

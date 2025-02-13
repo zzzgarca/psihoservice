@@ -7,10 +7,10 @@
             <i class="fas fa-user"></i> Cabinet de Psihologie Monica Bartucz
         </a> |
         <a href="https://www.facebook.com/profile.php?id=61554594382102" target="_blank">
-            <i class="fab fa-facebook-square"></i> Pagina de Facebook Monica Bartucz
+            <i class="fab fa-facebook-square"></i> Facebook
         </a> |
         <a href="https://www.instagram.com/monica.bartucz/" target="_blank">
-            <i class="fab fa-instagram-square"></i> Pagina de Instagram Monica Bartucz
+            <i class="fab fa-instagram-square"></i> Instagram
         </a> |
         <p>&copy; <?= date('Y') ?> PsihoService. Toate drepturile rezervate.</p>
     </div>

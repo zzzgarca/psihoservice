@@ -6,16 +6,28 @@ class ProfileController {
         }
 
         if (!isset($_SESSION['user_id'])) {
-            header('Location: ' . BASE_URL . 'logare');
+            header('Location: ' . BASE_URL . 'login');
             exit;
         }
 
-        $data = [
-            'email' => $_SESSION['email'],
-            'role' => $_SESSION['role']
-        ];
+        global $pdo;
 
-        $this->view('profile/index', $data);
+        // Fetch user data from the database
+        $stmt = $pdo->prepare("SELECT Email, Rol FROM Users WHERE ID_User = :userId");
+        $stmt->bindParam(':userId', $_SESSION['user_id'], PDO::PARAM_INT);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            $data = [
+                'email' => $user['Email'],
+                'role' => $user['Rol']
+            ];
+            $this->view('profile/index', $data);
+        } else {
+            // Handle case where user is not found
+            $this->view('profile/index', ['errorMessage' => 'Utilizatorul nu a fost găsit.']);
+        }
     }
 
     public function update() {

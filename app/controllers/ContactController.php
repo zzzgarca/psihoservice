@@ -6,7 +6,7 @@ class ContactController {
             'content' => 'Aici puteți găsi informații despre cum să ne contactați. Ne puteți trimite un email, ne puteți suna sau ne puteți vizita la adresa noastră.'
         ];
 
-        // Încărcăm pagina contact/approve_users.php cu datele aferente
+        // Încărcăm pagina contact/aproba.php cu datele aferente
         $this->view('contact/index', $data);
     }
 

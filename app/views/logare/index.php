@@ -11,7 +11,7 @@ require_once __DIR__ . '/../templates/meniu.php';
     <p style="color: red;"><?= htmlspecialchars($errorMessage) ?></p>
 <?php endif; ?>
 
-<form action="<?= BASE_URL ?>logare/authenticate" method="post">
+<form action="<?= BASE_URL ?>login/authenticate" method="post">
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required>
 
@@ -20,6 +20,8 @@ require_once __DIR__ . '/../templates/meniu.php';
 
     <button type="submit">Logare</button>
 </form>
+
+<p>Nu ai cont? <a href="<?= BASE_URL; ?>register">Înregistrează-te</a></p>
 
 <?php include_once __DIR__ . '/../templates/footer.php'; ?>
 </body>

@@ -9,7 +9,7 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null;
 <div class="sidebar">
     <h3>Dashboard</h3>
     <ul>
-        <li><a href="<?= BASE_URL; ?>dashboard">Acasă</a></li>
+        <li><a href="<?= BASE_URL; ?>dashboard">Home Dashboard</a></li>
 
         <?php if ($role === 'psiholog'): ?>
             <li><a href="<?= BASE_URL; ?>sedinte">Programare Ședințe</a></li>
@@ -22,9 +22,10 @@ $role = isset($_SESSION['role']) ? $_SESSION['role'] : null;
             <li><a href="<?= BASE_URL; ?>programari">Consultă Programările</a></li>
 
         <?php elseif ($role === 'administrator'): ?>
-            <li><a href="<?= BASE_URL; ?>contracte">Verifică Contractele</a></li>
-            <li><a href="<?= BASE_URL; ?>facturi">Generează Facturi</a></li>
-            <li><a href="<?= BASE_URL; ?>plati">Administrează Plățile</a></li>
+            <li><a href="<?= BASE_URL; ?>admin/contracte">Verifică Contractele</a></li>
+            <li><a href="<?= BASE_URL; ?>admin/facturi">Generează Facturi</a></li>
+            <li><a href="<?= BASE_URL; ?>admin/plati">Administrează Plățile</a></li>
+            <li><a href="<?= BASE_URL; ?>admin/aproba">Aproba Utulizatori</a></li>
         <?php endif; ?>
 
         <li><a href="<?= BASE_URL; ?>profile">Profilul Meu</a></li>

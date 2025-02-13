@@ -16,7 +16,7 @@ class RegisterController {
 
 
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $this->view('register', ['errorMessage' => 'Email invalid.']);
+                $this->view('register/index', ['errorMessage' => 'Email invalid.']);
                 return;
             }
 
@@ -32,7 +32,7 @@ class RegisterController {
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
-                $this->view('register', ['errorMessage' => 'Email-ul este deja folosit.']);
+                $this->view('register/index', ['errorMessage' => 'Email-ul este deja folosit.']);
                 return;
             }
 
@@ -46,9 +46,12 @@ class RegisterController {
             $stmt->bindParam(':status', $status);
 
             if ($stmt->execute()) {
-                $this->view('register', ['successMessage' => 'Cont creat! Dacă ai ales „Psiholog” sau „Administrator”, trebuie să aștepți aprobarea.']);
+                session_start();
+                $_SESSION['successMessage'] = 'Contul a fost creat! Dacă ai ales „Psiholog” sau „Administrator”, contul va deveni activ după aprobarea unui administrator.';
+                header('Location: ' . BASE_URL . 'register');
+                exit;
             } else {
-                $this->view('register', ['errorMessage' => 'Eroare la înregistrare.']);
+                $this->view('register/index', ['errorMessage' => 'Eroare la înregistrare.']);
             }
         }
     }

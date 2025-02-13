@@ -1,6 +1,6 @@
 <?php
 class AdminController {
-    public function approveUsers() {
+    public function aproba() {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
@@ -14,7 +14,7 @@ class AdminController {
         $stmt = $pdo->query("SELECT * FROM Users WHERE Status = 'pending'");
         $pendingUsers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $this->view('admin/approve_users', ['pendingUsers' => $pendingUsers]);
+        $this->view('admin/aproba', ['pendingUsers' => $pendingUsers]);
     }
 
     public function approve($userId) {
@@ -32,7 +32,7 @@ class AdminController {
         $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
 
-        header('Location: ' . BASE_URL . 'admin/approve_users');
+        header('Location: ' . BASE_URL . 'admin/aproba');
         exit;
     }
 
@@ -51,7 +51,7 @@ class AdminController {
         $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
 
-        header('Location: ' . BASE_URL . 'admin/approve_users');
+        header('Location: ' . BASE_URL . 'admin/aproba');
         exit;
     }
 

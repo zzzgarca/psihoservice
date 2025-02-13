@@ -1,6 +1,20 @@
-<?php include_once __DIR__ . '/../templates/header.php'; ?>
+<?php
+include_once __DIR__ . '/../templates/header.php';
+require_once __DIR__ . '/../templates/meniu.php';
+?>
 
 <h1>Înregistrare</h1>
+
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!empty($_SESSION['successMessage'])) {
+    echo '<p style="color: green;">' . htmlspecialchars($_SESSION['successMessage']) . '</p>';
+    unset($_SESSION['successMessage']);
+}
+?>
 
 <?php if (!empty($errorMessage)): ?>
     <p style="color: red;"><?= htmlspecialchars($errorMessage); ?></p>
