@@ -1,0 +1,9 @@
+.DS_Store
+.vscode/
+.idea/
+vendor/
+composer.lock
+.env
+.env.local
+config/config.php
+*.log
