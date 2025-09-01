@@ -1,34 +1,38 @@
 <?php
-
 require_once 'app/init.php';
 
+$reqPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?? '/';
+$basePath = trim(parse_url(BASE_URL, PHP_URL_PATH) ?? '', '/');
+$path = trim($reqPath, '/');
+if ($basePath && str_starts_with($path, $basePath)) {
+    $path = trim(substr($path, strlen($basePath)), '/');
+}
 
-$basePath = str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
-$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$uri = str_replace($basePath, '', $uri);
-$uri = trim($uri, '/');
+if ($path === '' || $path === 'index.php') {
+    $segments = [];
+} else {
+    $segments = array_values(array_filter(explode('/', $path), 'strlen'));
+}
 
-
-$segments = explode('/', $uri);
-
-
-$controllerName = !empty($segments[0]) ? ucfirst($segments[0]) . 'Controller' : 'HomeController';
-$method = !empty($segments[1]) ? $segments[1] : 'index';
+$controllerRaw = $segments[0] ?? 'home';
+$method = $segments[1] ?? 'index';
 $params = array_slice($segments, 2);
 
-
+$controllerSafe = preg_replace('~[^a-z0-9_-]~i', '', strtolower($controllerRaw));
+$method = preg_replace('~[^a-z0-9_-]~i', '', strtolower($method));
+$controllerName = ucfirst($controllerSafe) . 'Controller';
 $controllerFile = "app/controllers/{$controllerName}.php";
 
-if (file_exists($controllerFile)) {
+if (is_file($controllerFile)) {
     require_once $controllerFile;
-
-    $controller = new $controllerName();
-    
-    if (method_exists($controller, $method)) {
-        call_user_func_array([$controller, $method], $params);
-    } else {
-        require_once 'app/views/errors/404.php';
+    if (class_exists($controllerName)) {
+        $controller = new $controllerName();
+        if ($method && method_exists($controller, $method)) {
+            call_user_func_array([$controller, $method], $params);
+            exit;
+        }
     }
-} else {
-    require_once 'app/views/errors/404.php';
 }
+
+http_response_code(404);
+require_once 'app/views/errors/404.php';

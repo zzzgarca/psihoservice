@@ -6,7 +6,7 @@ class LoginController {
             'content' => 'Vă rugăm să vă autentificați pentru a accesa sistemul.',
         ];
 
-        $this->view('logare/index', $data);
+        $this->view('login/index', $data);
     }
 
     public function authenticate() {
@@ -24,7 +24,7 @@ class LoginController {
 
             if ($user && password_verify($password, $user['Parola'])) {
                 if ($user['Status'] !== 'approved') {
-                    $this->view('logare/index', ['errorMessage' => 'Contul nu este aprobat.']);
+                    $this->view('login/index', ['errorMessage' => 'Contul nu este aprobat.']);
                     return;
                 }
 
@@ -32,12 +32,15 @@ class LoginController {
                 $_SESSION['user_id'] = $user['ID_User'];
                 $_SESSION['email'] = $user['Email'];
                 $_SESSION['role'] = $user['Rol'];
+                $_SESSION['nume']    = $user['Nume'];
+                $_SESSION['prenume'] = $user['Prenume'];
+
 
                 // Redirect to dashboard
                 header('Location: ' . BASE_URL . 'dashboard');
                 exit;
             } else {
-                $this->view('logare/index', ['errorMessage' => 'Email sau parolă incorecte.']);
+                $this->view('login/index', ['errorMessage' => 'Email sau parolă incorecte.']);
             }
         }
     }

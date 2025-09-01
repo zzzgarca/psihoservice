@@ -8,11 +8,11 @@ class ServicesController {
 
         $data = [
             'title' => 'Serviciile Noastre - PsihoService',
-            'content' => 'Aici veți găsi detalii despre serviciile oferite de PsihoService.',
+            'content' => 'Aici veți găsi detalii about serviciile oferite de PsihoService.',
             'services' => $services
         ];
 
-        $this->view('servicii/index', $data);
+        $this->view('services/index', $data);
     }
 
     public function view($view, $data = []) {

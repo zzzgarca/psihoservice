@@ -1,20 +1,8 @@
 RewriteEngine On
-
-# Previne afișarea listei de directoare
 Options -Indexes
-
-# Forțează HTTPS (opțional, dezactivează dacă nu este necesar sau dacă testezi local)
-#RewriteCond %{HTTPS} off
-#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# Permite accesul direct la fișierele și directoarele reale
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
-# Redirecționează toate cererile rămase către aproba.php
 RewriteRule ^ index.php [QSA,L]
-
-# Previne accesul la fișierele .htaccess și alte fișiere ascunse
 RewriteCond %{SCRIPT_FILENAME} -d [OR]
 RewriteCond %{SCRIPT_FILENAME} -f
 RewriteRule "^\.|/\." - [F]

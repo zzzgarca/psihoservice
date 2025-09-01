@@ -11,7 +11,6 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// Load the correct sidebar based on user role
 $role = isset($_SESSION['role']) ? $_SESSION['role'] : null;
 ?>
 

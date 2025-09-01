@@ -35,7 +35,7 @@ class ProfileController {
             global $pdo;
 
             if (!isset($_SESSION['user_id'])) {
-                header('Location: ' . BASE_URL . 'logare');
+                header('Location: ' . BASE_URL . 'login');
                 exit;
             }
 

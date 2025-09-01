@@ -6,7 +6,7 @@ class AboutController {
             'content' => 'Aici veți găsi informații despre echipa noastră și misiunea PsihoService.'
         ];
 
-        $this->view('despre/index', $data);
+        $this->view('about/index', $data);
     }
 
     public function view($view, $data = []) {

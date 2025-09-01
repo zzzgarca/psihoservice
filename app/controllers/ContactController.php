@@ -3,10 +3,10 @@ class ContactController {
     public function index() {
         $data = [
             'title' => 'Contact - PsihoService',
-            'content' => 'Aici puteți găsi informații despre cum să ne contactați. Ne puteți trimite un email, ne puteți suna sau ne puteți vizita la adresa noastră.'
+            'content' => 'Aici puteți găsi informații about cum să ne contactați. Ne puteți trimite un email, ne puteți suna sau ne puteți vizita la adresa noastră.'
         ];
 
-        // Încărcăm pagina contact/aproba.php cu datele aferente
+        // Încărcăm pagina contact/aprove.php cu datele aferente
         $this->view('contact/index', $data);
     }
 
@@ -33,7 +33,7 @@ class ContactController {
 
 
         $data['title'] = 'Contact - PsihoService';
-        $data['content'] = 'Aici puteți găsi informații despre cum să ne contactați.';
+        $data['content'] = 'Aici puteți găsi informații about cum să ne contactați.';
         $this->view('contact/index', $data);
     }
 
